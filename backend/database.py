@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Use pymongo to connect to MongoDB
-MONGODB_URL = os.getenv("MONGODB_URL", "mongodb://127.0.0.1:27017/")
+MONGODB_URL = os.getenv("MONGODB_URL", "mongodb+srv://pranalikadam4528_db_user:e0397PKPpfCYSIlJ@cluster0.ayqfitc.mongodb.net/?appName=Cluster0")
 MONGODB_DB_NAME = os.getenv("MONGODB_DB_NAME", "student_shield_db")
 
 try:
