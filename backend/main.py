@@ -1,5 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Import the database module to ensure the MongoDB connection runs when the app starts
 import database

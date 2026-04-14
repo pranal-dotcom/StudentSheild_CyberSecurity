@@ -1,0 +1,42 @@
+services:
+  # Backend Service (FastAPI)
+  - type: web
+    name: studentshield-backend
+    runtime: python
+    plan: free
+    autoDeploy: true
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: PYTHON_VERSION
+        value: 3.11.5
+      - key: MONGODB_URL
+        value: mongodb+srv://username:password@cluster.mongodb.net/student_shield_db?retryWrites=true&w=majority
+      - key: MONGODB_DB_NAME
+        value: student_shield_db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+    healthCheckPath: /
+    healthCheckProtocol: HTTP
+
+  # Frontend Service (React)
+  - type: web
+    name: studentshield-frontend
+    runtime: static
+    plan: free
+    autoDeploy: true
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://studentshield-backend.onrender.com/*
+    domains:
+      - studentshield-frontend.onrender.com
