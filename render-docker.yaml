@@ -1,0 +1,40 @@
+services:
+  # Backend Service (FastAPI with Docker)
+  - type: web
+    name: studentshield-backend
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: MONGODB_URL
+        value: mongodb+srv://pranalikadam4528_db_user:e0397PKPpfCYSIlJ@cluster0.ayqfitc.mongodb.net/?appName=Cluster0
+      - key: MONGODB_DB_NAME
+        value: student_shield_db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+    healthCheckPath: /
+    healthCheckProtocol: HTTP
+
+  # Frontend Service (React with Docker)
+  - type: web
+    name: studentshield-frontend
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://studentshield-backend.onrender.com/*
+    domains:
+      - studentshield-frontend.onrender.com

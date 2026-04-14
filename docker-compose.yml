@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGODB_URL=mongodb+srv://pranalikadam4528_db_user:e0397PKPpfCYSIlJ@cluster0.ayqfitc.mongodb.net/?appName=Cluster0
+      - MONGODB_DB_NAME=student_shield_db
+      - SECRET_KEY=my_super_secret_studentshield_key_change_this_in_production
+      - ALGORITHM=HS256
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
