@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Pranali Bharat Kadam",
+        "email": "Pranalikadam4528@gmail.com",
+        "password": "$2b$12$1Wsbkek6/9vmGhQ12FjiauJ3xr6adLfKpPWNXFiVIareMNTj2RVJC"
+    },
+    {
+        "name": "pranali kadam",
+        "email": "pranalikadam4528@gmail.com",
+        "password": "$2b$12$2dDO4rL0XcCwTp8O9zcaNuc0Z1GvSfg9JUIfHo2a3I5IHdR55vyyG"
+    },
+    {
+        "name": "t",
+        "email": "t@t.com",
+        "password": "$2b$12$2l/k6gvdM3MAJE.g7EeuqemNpGGxXcFOHEECeJVafkNSRQJsD7SAG"
+    },
+    {
+        "name": "Test User",
+        "email": "test@test.com",
+        "password": "$2b$12$IzNcpZOLt3Ne6NSivdSf1u0DY3cmm4tR84TUFj7RmFItLoEWHaGOy"
+    },
+    {
+        "name": "Test User2",
+        "email": "test2@test.com",
+        "password": "$2b$12$MkVNVVoJZIG/ukHlAR4OZuxa61QbSOr1yDfaicSrsw6hdTV9tcozK"
+    }
+]
