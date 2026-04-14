@@ -58,7 +58,7 @@ const Dashboard = ({ token, onLogout }) => {
 
     const fetchDashboard = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/dashboard', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/dashboard`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
         if (res.ok) {
@@ -85,7 +85,7 @@ const Dashboard = ({ token, onLogout }) => {
     
     try {
       const isGetRequest = endpoint === 'history'
-      const res = await fetch(`http://127.0.0.1:8000/${endpoint}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'}/${endpoint}`, {
         method: isGetRequest ? 'GET' : 'POST',
         headers: { 
           'Content-Type': 'application/json',
